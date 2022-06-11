@@ -352,11 +352,8 @@ extension SwiftWebVC: WKNavigationDelegate {
             
         default:
             //print("Default")
-            break
+            decisionHandler(.allow)
         }
-        
-        decisionHandler(.allow)
-        
     }
     
     func openCustomApp(urlScheme: String, additional_info:String){
