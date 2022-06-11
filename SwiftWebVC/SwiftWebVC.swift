@@ -186,13 +186,15 @@ public class SwiftWebVC: UIViewController {
             let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: toolbarWidth, height: 44.0))
             if !closing {
                 toolbar.items = items as? [UIBarButtonItem]
-                if presentingViewController == nil {
-                    toolbar.barTintColor = navigationController!.navigationBar.barTintColor
+                if let navigationController = navigationController {
+                    if presentingViewController == nil {
+                        toolbar.barTintColor = navigationController.navigationBar.barTintColor
+                    }
+                    else {
+                        toolbar.barStyle = navigationController.navigationBar.barStyle
+                    }
+                    toolbar.tintColor = navigationController.navigationBar.tintColor
                 }
-                else {
-                    toolbar.barStyle = navigationController!.navigationBar.barStyle
-                }
-                toolbar.tintColor = navigationController!.navigationBar.tintColor
             }
             navigationItem.rightBarButtonItems = items.reverseObjectEnumerator().allObjects as? [UIBarButtonItem]
             
